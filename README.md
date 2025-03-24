@@ -40,10 +40,10 @@ run postgress locally : https://www.postgresql.org/download/
    ```sh
    npm install
    ```
+
 4. Set up your `.env` file
 
    - Duplicate `.env.example` to `.env`
-
 
 5. Setup Node
    If your Node version does not meet the project's requirements as instructed by the docs, "nvm" (Node Version Manager) allows using Node at the version required by the project:
@@ -62,13 +62,20 @@ run postgress locally : https://www.postgresql.org/download/
 
 6. Migrate Database
 
-    ```sh
-    npx prisma migrate dev
-    ```
+   ```sh
+   npx prisma migrate dev
+   ```
+
+7. Build the code
+
+   ```sh
+   npm run build
+   ```
 
 #### Quick start with node
+
 ```sh
-node dist/index.js
+npm run start
 ```
 
 well done!
