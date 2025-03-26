@@ -13,9 +13,9 @@ Here is what you need to be able to run docker-compose.
 
 don't have those? install follow below steps
 
-click here to get the letest verson on node: https://nodejs.org/en/download
+click [here](https://nodejs.org/en/download) to get the letest verson on node.
 
-run postgress locally : https://www.postgresql.org/download/
+install postgress locally and run from [here](https://www.postgresql.org/download/)
 
 ## Development
 
@@ -35,17 +35,19 @@ run postgress locally : https://www.postgresql.org/download/
    cd docker-compose
    ```
 
-3. Install packages with npm
+## Manual Installation
+
+1. Install packages with npm
 
    ```sh
    npm install
    ```
 
-4. Set up your `.env` file
+2. Set up your `.env` file
 
    - Duplicate `.env.example` to `.env`
 
-5. Setup Node
+3. Setup Node
    If your Node version does not meet the project's requirements as instructed by the docs, "nvm" (Node Version Manager) allows using Node at the version required by the project:
 
    ```sh
@@ -60,13 +62,13 @@ run postgress locally : https://www.postgresql.org/download/
 
    You can install nvm from [here](https://github.com/nvm-sh/nvm).
 
-6. Migrate Database
+4. Migrate Database
 
    ```sh
    npx prisma migrate dev
    ```
 
-7. Build the code
+5. Build the code
 
    ```sh
    npm run build
@@ -77,5 +79,35 @@ run postgress locally : https://www.postgresql.org/download/
 ```sh
 npm run start
 ```
+
+## Docker Installation
+
+1. Get docker from [here](https://www.docker.com/get-started/)
+
+2. Build the image
+
+   ```sh
+   docker build -t node-app .
+   ```
+
+3. Run postgres locally using docker
+
+   ```sh
+   docker run -d --name postgres-db --network node-app-network -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
+   ```
+
+4. Run postgres locally using docker
+
+   ```sh
+   docker run -d --name postgres-db --network node-app-network -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
+   ```
+
+5. Run postgres locally using docker
+
+   ```sh
+   docker run -p -d 3000:3000 --network node-app-network --name node-app node-app
+   ```
+
+6. Run the code
 
 well done!
