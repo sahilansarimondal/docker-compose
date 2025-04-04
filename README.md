@@ -84,10 +84,10 @@ npm run start
 
 1. Get docker from [here](https://www.docker.com/get-started/)
 
-2. Build the image
+2. Create a docker network
 
    ```sh
-   docker build -t node-app .
+   docker network create node-app-network
    ```
 
 3. Run postgres locally using docker
@@ -96,18 +96,31 @@ npm run start
    docker run -d --name postgres-db --network node-app-network -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
    ```
 
-4. Run postgres locally using docker
+4. Set up your `.env` file
+
+   - Duplicate `.env.example` to `.env`
+
+5. Build the image
 
    ```sh
-   docker run -d --name postgres-db --network node-app-network -e POSTGRES_PASSWORD=password -p 5432:5432 postgres
+   docker build -t node-app .
    ```
 
-5. Run postgres locally using docker
+6. Run the image
 
    ```sh
-   docker run -p -d 3000:3000 --network node-app-network --name node-app node-app
+   docker run -p 3000:3000 --network node-app-network --name node-app node-app
    ```
 
-6. Run the code
+## Docker Compose
+
+1. Get docker, docker compose from [here](https://www.docker.com/get-started/)
+
+2. Run the code
+
+   ```sh
+   docker compose up
+   ```
+
 
 well done!
