@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 
 app.get("/", async (req, res) => {
   const users = await prisma.user.findMany();
-  res.send({ users: users });
+  res.send({ users: users, "some message": "Yeh! you got it, you've learned hot reloading with nodemon haha" });
 });
 
 app.post("/user", async (req, res) => {
