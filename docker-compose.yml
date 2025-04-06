@@ -19,6 +19,7 @@ services:
 
       app: 
           build: .
+          image: node_app_prod
           container_name: node_app_dev
           depends_on:
             - database
