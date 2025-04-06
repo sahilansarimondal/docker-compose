@@ -122,5 +122,12 @@ npm run start
    docker compose up
    ```
 
+   Also
+
+3. Run for local development
+
+      ```sh
+   docker compose -f docker-compose.dev.yml up
+   ```
 
 well done!

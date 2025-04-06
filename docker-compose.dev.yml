@@ -3,7 +3,7 @@ version: "3.7"
 services:
       database: 
           image: postgres
-          container_name: "postgres_db_dev"
+          container_name: "postgres_db"
           restart: always
           environment:
               POSTGRES_USER: postgres
@@ -18,18 +18,23 @@ services:
 
 
       app: 
-          build: .
-          image: node_app_prod
-          container_name: node_app_dev
+          build:
+            context: .
+            dockerfile: Dockerfile.dev
+          image: node_app_dev
+          container_name: node_app
           depends_on:
             - database
           environment:
             DATABASE_URL:  "postgresql://postgres:password@database:5432/mydb"
           ports:
             - 3000:3000
+          volumes:
+            - .:/app
+            - /app/node_modules
           networks: 
             - mynetwork
-          command: ["sh", "-c", "npx prisma migrate dev && node dist/index.js"]
+          command: ["sh", "-c", "npx prisma migrate dev && nodemon"]
 
 volumes:
   postgres_data:
